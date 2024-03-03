@@ -5,5 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <text><span id="counter"></span> tahmini girin:</text>
+    <input type="text" id="guessNumber" /> <br />
+    <button onclick="guess()">Tahmin Yap</button>
+    <hr />
+    <label id="result"></label>
+
+    <script>
+      let count = 1;
+      let number = Math.floor(Math.random() * 100 + 1);
+      let guessNumber = document.getElementById("guessNumber").value;
+
+      function guess() {
+        guessNumber = document.getElementById("guessNumber").value;
+
+        if (number > guessNumber) {
+          document.getElementById(
+            "result"
+          ).innerText = `Daha büyük bir sayı girin.`;
+          count++;
+          document.getElementById("counter").innerText = count + ".";
+        } else if (number < guessNumber) {
+          document.getElementById(
+            "result"
+          ).innerText = `Daha küçük bir sayı girin.`;
+          count++;
+          document.getElementById("counter").innerText = count + ".";
+        } else {
+          document.getElementById(
+            "result"
+          ).innerText = `Sayı ${count} denemede bulundu.`;
+        }
+        if (count == 7) {
+          document.getElementById(
+            "result"
+          ).innerText = `Deneme hakkınız kalmadı. Kaybettiniz.`;
+        }
+      }
+
+      document.getElementById("counter").innerText = count + ".";
+    </script>
+  </body>
 </html>
